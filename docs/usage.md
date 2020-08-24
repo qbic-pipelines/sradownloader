@@ -1,37 +1,38 @@
-# steffenlem/sradownloader: Usage
+# qbic-pipelines/sradownloader: Usage
 
 ## Table of contents
 
-* [Table of contents](#table-of-contents)
-* [Introduction](#introduction)
-* [Running the pipeline](#running-the-pipeline)
-  * [Updating the pipeline](#updating-the-pipeline)
-  * [Reproducibility](#reproducibility)
-* [Main arguments](#main-arguments)
-  * [`-profile`](#-profile)
-  * [`--run_acc_list`](#--run_acc_list)
-  * [`--ngc`](#--ngc)
-* [Job resources](#job-resources)
-  * [Automatic resubmission](#automatic-resubmission)
-  * [Custom resource requests](#custom-resource-requests)
-* [AWS Batch specific parameters](#aws-batch-specific-parameters)
-  * [`--awsqueue`](#--awsqueue)
-  * [`--awsregion`](#--awsregion)
-  * [`--awscli`](#--awscli)
-* [Other command line parameters](#other-command-line-parameters)
-  * [`--outdir`](#--outdir)
-  * [`--email`](#--email)
-  * [`--email_on_fail`](#--email_on_fail)
-  * [`-name`](#-name)
-  * [`-resume`](#-resume)
-  * [`-c`](#-c)
-  * [`--custom_config_version`](#--custom_config_version)
-  * [`--custom_config_base`](#--custom_config_base)
-  * [`--max_memory`](#--max_memory)
-  * [`--max_time`](#--max_time)
-  * [`--max_cpus`](#--max_cpus)
-  * [`--plaintext_email`](#--plaintext_email)
-  * [`--monochrome_logs`](#--monochrome_logs)
+- [qbic-pipelines/sradownloader: Usage](#qbic-pipelinessradownloader-usage)
+  - [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Running the pipeline](#running-the-pipeline)
+    - [Updating the pipeline](#updating-the-pipeline)
+    - [Reproducibility](#reproducibility)
+  - [Main arguments](#main-arguments)
+    - [`-profile`](#-profile)
+    - [`--run_acc_list`](#--run_acc_list)
+    - [`--ngc`](#--ngc)
+  - [Job resources](#job-resources)
+    - [Automatic resubmission](#automatic-resubmission)
+    - [Custom resource requests](#custom-resource-requests)
+  - [AWS Batch specific parameters](#aws-batch-specific-parameters)
+    - [`--awsqueue`](#--awsqueue)
+    - [`--awsregion`](#--awsregion)
+    - [`--awscli`](#--awscli)
+  - [Other command line parameters](#other-command-line-parameters)
+    - [`--outdir`](#--outdir)
+    - [`--email`](#--email)
+    - [`--email_on_fail`](#--email_on_fail)
+    - [`-name`](#-name)
+    - [`-resume`](#-resume)
+    - [`-c`](#-c)
+    - [`--custom_config_version`](#--custom_config_version)
+    - [`--custom_config_base`](#--custom_config_base)
+    - [`--max_memory`](#--max_memory)
+    - [`--max_time`](#--max_time)
+    - [`--max_cpus`](#--max_cpus)
+    - [`--plaintext_email`](#--plaintext_email)
+    - [`--monochrome_logs`](#--monochrome_logs)
 
 ## Introduction
 
@@ -50,7 +51,7 @@ NXF_OPTS='-Xms1g -Xmx4g'
 The typical command for running the pipeline is as follows:
 
 ```bash
-nextflow run steffenlem/sradownloader -r dev --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
+nextflow run qbic-pipelines/sradownloader -r dev --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.
@@ -69,14 +70,14 @@ results         # Finished results (configurable, see below)
 When you run the above command, Nextflow automatically pulls the pipeline code from GitHub and stores it as a cached version. When running the pipeline after this, it will always use the cached version if available - even if the pipeline has been updated since. To make sure that you're running the latest version of the pipeline, make sure that you regularly update the cached version of the pipeline:
 
 ```bash
-nextflow pull steffenlem/sradownloader
+nextflow pull qbic-pipelines/sradownloader
 ```
 
 ### Reproducibility
 
 It's a good idea to specify a pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.
 
-First, go to the [steffenlem/sradownloader releases page](https://github.com/steffenlem/sradownloader/releases) and find the latest version number - numeric only (eg. `1.3.1`). Then specify this when running the pipeline with `-r` (one hyphen) - eg. `-r 1.3.1`.
+First, go to the [qbic-pipelines/sradownloader releases page](https://github.com/qbic-pipelines/sradownloader/releases) and find the latest version number - numeric only (eg. `1.3.1`). Then specify this when running the pipeline with `-r` (one hyphen) - eg. `-r 1.3.1`.
 
 This version number will be logged in reports when you run the pipeline, so that you'll know what you used when you look back in the future.
 
