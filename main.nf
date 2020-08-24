@@ -1,11 +1,11 @@
 #!/usr/bin/env nextflow
 /*
 ========================================================================================
-                         steffenlem/sradownloader
+                         qbic-pipelines/sradownloader
 ========================================================================================
- steffenlem/sradownloader Analysis Pipeline.
+ qbic-pipelines/sradownloader Analysis Pipeline.
  #### Homepage / Documentation
- https://github.com/steffenlem/sradownloader
+ https://github.com/qbic-pipelines/sradownloader
 ----------------------------------------------------------------------------------------
 */
 
@@ -18,7 +18,7 @@ def helpMessage() {
 
     The typical command for running the pipeline is as follows:
 
-    nextflow run steffenlem/sradownloader --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
+    nextflow run qbic-pipelines/sradownloader --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
 
     Mandatory arguments:
       --run_acc_list                List of SRA run accessions (newline separated)
@@ -122,8 +122,8 @@ Channel.from(summary.collect{ [it.key, it.value] })
     .map { x -> """
     id: 'nf-core-sradownloader-summary'
     description: " - this information is collected when the pipeline is started."
-    section_name: 'steffenlem/sradownloader Workflow Summary'
-    section_href: 'https://github.com/steffenlem/sradownloader'
+    section_name: 'qbic-pipelines/sradownloader Workflow Summary'
+    section_href: 'https://github.com/qbic-pipelines/sradownloader'
     plot_type: 'html'
     data: |
         <dl class=\"dl-horizontal\">
@@ -246,9 +246,9 @@ process output_documentation {
 workflow.onComplete {
 
     // Set up the e-mail variables
-    def subject = "[steffenlem/sradownloader] Successful: $workflow.runName"
+    def subject = "[qbic-pipelines/sradownloader] Successful: $workflow.runName"
     if (!workflow.success) {
-        subject = "[steffenlem/sradownloader] FAILED: $workflow.runName"
+        subject = "[qbic-pipelines/sradownloader] FAILED: $workflow.runName"
     }
     def email_fields = [:]
     email_fields['version'] = workflow.manifest.version
@@ -303,11 +303,11 @@ workflow.onComplete {
             if (params.plaintext_email) { throw GroovyException('Send plaintext e-mail, not HTML') }
             // Try to send HTML e-mail using sendmail
             [ 'sendmail', '-t' ].execute() << sendmail_html
-            log.info "[steffenlem/sradownloader] Sent summary e-mail to $email_address (sendmail)"
+            log.info "[qbic-pipelines/sradownloader] Sent summary e-mail to $email_address (sendmail)"
         } catch (all) {
             // Catch failures and try with plaintext
             [ 'mail', '-s', subject, email_address ].execute() << email_txt
-            log.info "[steffenlem/sradownloader] Sent summary e-mail to $email_address (mail)"
+            log.info "[qbic-pipelines/sradownloader] Sent summary e-mail to $email_address (mail)"
         }
     }
 
@@ -333,10 +333,10 @@ workflow.onComplete {
     }
 
     if (workflow.success) {
-        log.info "-${c_purple}[steffenlem/sradownloader]${c_green} Pipeline completed successfully${c_reset}-"
+        log.info "-${c_purple}[qbic-pipelines/sradownloader]${c_green} Pipeline completed successfully${c_reset}-"
     } else {
         checkHostname()
-        log.info "-${c_purple}[steffenlem/sradownloader]${c_red} Pipeline completed with errors${c_reset}-"
+        log.info "-${c_purple}[qbic-pipelines/sradownloader]${c_red} Pipeline completed with errors${c_reset}-"
     }
 
 }
@@ -360,7 +360,7 @@ def nfcoreHeader() {
     ${c_blue}  |\\ | |__  __ /  ` /  \\ |__) |__         ${c_yellow}}  {${c_reset}
     ${c_blue}  | \\| |       \\__, \\__/ |  \\ |___     ${c_green}\\`-._,-`-,${c_reset}
                                             ${c_green}`._,._,\'${c_reset}
-    ${c_purple}  steffenlem/sradownloader v${workflow.manifest.version}${c_reset}
+    ${c_purple}  qbic-pipelines/sradownloader v${workflow.manifest.version}${c_reset}
     -${c_dim}--------------------------------------------------${c_reset}-
     """.stripIndent()
 }
