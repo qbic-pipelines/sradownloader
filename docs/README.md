@@ -1,6 +1,6 @@
-# steffenlem/sradownloader: Documentation
+# qbic-pipelines/sradownloader: Documentation
 
-The steffenlem/sradownloader documentation is split into the following files:
+The qbic-pipelines/sradownloader documentation is split into the following files:
 
 1. [Installation](https://nf-co.re/usage/installation)
 2. Pipeline configuration

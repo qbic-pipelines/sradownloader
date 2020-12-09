@@ -1,13 +1,13 @@
-<!-- # ![steffenlem/sradownloader](docs/images/nf-core-sradownloader_logo.png) -->
+# ![qbic-pipelines/sradownloader](docs/images/nf-core-sradownloader_logo.png)
 
 **A pipeline to download raw data from SRA**.
 
-[![GitHub Actions CI Status](https://github.com/steffenlem/sradownloader/workflows/nf-core%20CI/badge.svg)](https://github.com/steffenlem/sradownloader/actions)
-<!-- [![GitHub Actions Linting Status](https://github.com/steffenlem/sradownloader/workflows/nf-core%20linting/badge.svg)](https://github.com/steffenlem/sradownloader/actions) -->
+[![GitHub Actions CI Status](https://github.com/qbic-pipelines/sradownloader/workflows/nf-core%20CI/badge.svg)](https://github.com/qbic-pipelines/sradownloader/actions)
+[![GitHub Actions Linting Status](https://github.com/qbic-pipelines/sradownloader/workflows/nf-core%20linting/badge.svg)](https://github.com/qbic-pipelines/sradownloader/actions)
 [![Nextflow](https://img.shields.io/badge/nextflow-%E2%89%A519.10.0-brightgreen.svg)](https://www.nextflow.io/)
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/)
-[![Docker](https://img.shields.io/docker/automated/steffenlem/sradownloader.svg)](https://hub.docker.com/r/steffenlem/sradownloader)
+[![Docker](https://img.shields.io/docker/automated/qbic-pipelines/sradownloader.svg)](https://hub.docker.com/r/qbic-pipelines/sradownloader)
 
 ## Introduction
 
@@ -22,7 +22,7 @@ ii. Install either [`Docker`](https://docs.docker.com/engine/installation/) or [
 iii. Download the pipeline and test it on a minimal dataset with a single command
 
 ```bash
-nextflow run -r master steffenlem/sradownloader -profile test,<docker/singularity/conda/institute>
+nextflow run qbic-pipelines/sradownloader -profile test,<docker/singularity/conda/institute>
 ```
 
 <!-- > Please check [nf-core/configs](https://github.com/nf-core/configs#documentation) to see if a custom config file to run nf-core pipelines already exists for your Institute. If so, you can simply use `-profile <institute>` in your command. This will enable either `docker` or `singularity` and set the appropriate execution settings for your local compute environment. -->
@@ -32,14 +32,14 @@ iv. Start running your own analysis!
 <!-- TODO nf-core: Update the default command above used to run the pipeline -->
 
 ```bash
-nextflow run -r master steffenlem/sradownloader --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
+nextflow run qbic-pipelines/sradownloader --run_acc_list '<path_to_acc_list.txt>' --ngc '<path_to_key.ngc>' -profile docker
 ```
 
 See [usage docs](docs/usage.md) for all of the available options when running the pipeline.
 
 ## Documentation
 
-The steffenlem/sradownloader pipeline comes with documentation about the pipeline, found in the `docs/` directory:
+The qbic-pipelines/sradownloader pipeline comes with documentation about the pipeline, found in the `docs/` directory:
 
 1. [Installation](https://nf-co.re/usage/installation)
 2. Pipeline configuration
@@ -54,7 +54,7 @@ The steffenlem/sradownloader pipeline comes with documentation about the pipelin
 
 ## Credits
 
-steffenlem/sradownloader was originally written by Steffen Lemke.
+qbic-pipelines/sradownloader was originally written by Steffen Lemke.
 
 ## Contributions and Support
 
@@ -63,7 +63,7 @@ If you would like to contribute to this pipeline, please see the [contributing g
 ## Citation
 
 <!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi. -->
-<!-- If you use  steffenlem/sradownloader for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
+<!-- If you use  qbic-pipelines/sradownloader for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
 You can cite the `nf-core` publication as follows:
 
