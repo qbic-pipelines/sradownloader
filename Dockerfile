@@ -1,6 +1,6 @@
-FROM nfcore/base:1.9
+FROM nfcore/base:1.12
 LABEL authors="Steffen Lemke" \
-      description="Docker image containing all software requirements for the steffenlem/sradownloader pipeline"
+      description="Docker image containing all software requirements for the qbicpipelines/sradownloader pipeline"
 
 # Install the conda environment
 COPY environment.yml /
