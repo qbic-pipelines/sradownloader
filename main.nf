@@ -145,7 +145,7 @@ process configuration {
     """
     mkdir -p ~/.ncbi
     printf '/LIBS/GUID = "%s"\n' `uuid` > ~/.ncbi/user-settings.mkfg
-"""
+    """
 }
 
 /*
