@@ -1,7 +1,7 @@
 <!--
 # qbic-pipelines/sradownloader pull request
 
-Many thanks for contributing to nf-core/sradownloader!
+Many thanks for contributing to qbic-pipelines/sradownloader!
 
 Please fill in the appropriate checklist below (delete whatever is not relevant).
 These are the most common things requested on pull requests (PRs).
@@ -11,7 +11,7 @@ Remember that PRs should be made against the dev branch, unless you're preparing
 Learn more about contributing: [CONTRIBUTING.md](https://github.com/qbic-pipelines/sradownloader/tree/master/.github/CONTRIBUTING.md)
 -->
 
-## PR checklist
+# PR checklist
 
 - [ ] This comment contains a description of changes (with reason)
 - [ ] `CHANGELOG.md` is updated
