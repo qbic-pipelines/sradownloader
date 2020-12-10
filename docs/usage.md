@@ -88,7 +88,7 @@ This version number will be logged in reports when you run the pipeline, so that
 
 Use this parameter to choose a configuration profile. Profiles can give configuration presets for different compute environments.
 
-Several generic profiles are bundled with the pipeline which instruct the pipeline to use software packaged using different methods (Docker, Singularity, Conda) - see below.
+Several generic profiles are bundled with the pipeline which instruct the pipeline to use software packaged using different methods (Docker, Singularity, Podman, Conda) - see below.
 
 > We highly recommend the use of Docker or Singularity containers for full pipeline reproducibility, however when this is not possible, Conda is also supported.
 
@@ -99,19 +99,19 @@ They are loaded in sequence, so later profiles can overwrite earlier profiles.
 
 If `-profile` is not specified, the pipeline will run locally and expect all software to be installed and available on the `PATH`. This is _not_ recommended.
 
-* `docker`
-  * A generic configuration profile to be used with [Docker](http://docker.com/)
-  * Pulls software from dockerhub: [`nfcore/sradownloader`](http://hub.docker.com/r/nfcore/sradownloader/)
-* `singularity`
-  * A generic configuration profile to be used with [Singularity](http://singularity.lbl.gov/)
-  * Pulls software from DockerHub: [`nfcore/sradownloader`](http://hub.docker.com/r/nfcore/sradownloader/)
-* `conda`
-  * Please only use Conda as a last resort i.e. when it's not possible to run the pipeline with Docker or Singularity.
-  * A generic configuration profile to be used with [Conda](https://conda.io/docs/)
-  * Pulls most software from [Bioconda](https://bioconda.github.io/)
-* `test`
-  * A profile with a complete configuration for automated testing
-  * Includes links to test data so needs no other parameters
+- `docker`
+  - A generic configuration profile to be used with [Docker](http://docker.com/)
+  - Pulls software from dockerhub: [`nfcore/sradownloader`](http://hub.docker.com/r/nfcore/sradownloader/)
+- `singularity`
+  - A generic configuration profile to be used with [Singularity](http://singularity.lbl.gov/)
+  - Pulls software from DockerHub: [`nfcore/sradownloader`](http://hub.docker.com/r/nfcore/sradownloader/)
+- `conda`
+  - Please only use Conda as a last resort i.e. when it's not possible to run the pipeline with Docker or Singularity.
+  - A generic configuration profile to be used with [Conda](https://conda.io/docs/)
+  - Pulls most software from [Bioconda](https://bioconda.github.io/)
+- `test`
+  - A profile with a complete configuration for automated testing
+  - Includes links to test data so needs no other parameters
 
 <!-- TODO nf-core: Document required command line parameters -->
 
@@ -123,7 +123,6 @@ Use this to specify the location of your input list of SRA run accessions. Each 
 --run_acc_list 'path/to/file/list_of_SRA_run_accesisons.txt'
 ```
 
-
 ### `--ngc`
 
 If controlled-access data under dbGaP wants to downloaded, you need to provide a dbGaP repository key file using `--ngc` on the command line when you launch the pipeline. For example:
@@ -131,9 +130,8 @@ If controlled-access data under dbGaP wants to downloaded, you need to provide a
 ```bash
 --ngc prj_phs710EA_test.ngc
 ```
-An example repository key can be found here: https://ncbi.github.io/sra-tools/pd_usage_guide.html
 
-
+An example repository key can be found [here](https://ncbi.github.io/sra-tools/pd_usage_guide.html).
 
 ## Job resources
 
@@ -166,8 +164,6 @@ The [AWS CLI](https://www.nextflow.io/docs/latest/awscloud.html#aws-cli-installa
 Please make sure to also set the `-w/--work-dir` and `--outdir` parameters to a S3 storage bucket of your choice - you'll get an error message notifying you if you didn't.
 
 ## Other command line parameters
-
-<!-- TODO nf-core: Describe any other command line flags here -->
 
 ### `--outdir`
 
