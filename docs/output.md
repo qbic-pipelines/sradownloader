@@ -16,6 +16,7 @@ and processes data using the following steps:
 * [Prefetch](#prefetch) - download of SRA data
 * [Fasterq-dump](#fasterq-dump) - converts SRA files to FastQ files
 * [sort_fastq_files](#sort_fastq_files) - sorts fastq files into single-end and paired-end
+* [Download Metadata](#get_metadata) - downloads metadata for SRA files
 
 ## Prefetch
 
@@ -27,12 +28,17 @@ For further reading and documentation see the [SRA-Tools documentation](https://
 
 ## Fasterq-dump
 
-[sort_fastq_files](https://github.com/ncbi/sra-tools) is another tool of the SRA-tools package. It converts .sra files to FastQ files in a multithreaded manner. The files are automatically split during the conversion process into forward and reverse reads according to the sequencing strategy. The FastQ files are compressed to .fastq.gz files by pigz, to reduce the file size of the output.
+[fasterqdump](https://github.com/ncbi/sra-tools) is another tool of the SRA-tools package. It converts .sra files to FastQ files in a multithreaded manner. The files are automatically split during the conversion process into forward and reverse reads according to the sequencing strategy. The FastQ files are compressed to .fastq.gz files by pigz, to reduce the file size of the output.
 
 For further reading and documentation see the [SRA-Tools documentation](https://ncbi.github.io/sra-tools/).
 
 ## sort_fastq_files
 
-[sort_fastq_files~~~~](https://github.com/ncbi/sra-tools) sorts the reads according to their orientation, which is either singleEnd or pairedEnd. During the conversion step to FastQ files in paired-end experiments, in some cases, unmatched reads are produced, which are sorted into a separate directory called 'pairedEnd/unmatched_reads'.
+[sort_fastq_files](https://github.com/ncbi/sra-tools) sorts the reads according to their orientation, which is either singleEnd or pairedEnd. During the conversion step to FastQ files in paired-end experiments, in some cases, unmatched reads are produced, which are sorted into a separate directory called `pairedEnd/unmatched_reads`.
 
 **Output directory: `results/sorted_output_files`**
+
+## get_metadata
+
+This process downloads metadata for each SRA run accession in XML format into a separate directory called `results/metadata`.
+
