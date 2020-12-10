@@ -10,7 +10,7 @@ Updated SRA-Tools to 2.10.8, which improves stability of the downloading and unp
 - Now the pipeline also features an automatic user config generation, which is required for the SRA-tools package.
 - Additionally, unpaired reads which are sometimes generated when splitting paired end data, are now saved in a separte directory inside the pairedEnd output directory.
 
-### `Added` 
+### `Added`
 
 ## 2020-12-10
 
