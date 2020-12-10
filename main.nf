@@ -309,7 +309,6 @@ process get_metadata{
 	def url = "${params.link}" + "${acc}"	
 	"""	
 	wget '${url}' -nv -O ${acc}.xml
-	
 	"""	
 }
 
