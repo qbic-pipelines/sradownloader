@@ -41,4 +41,3 @@ For further reading and documentation see the [SRA-Tools documentation](https://
 ## get_metadata
 
 This process downloads metadata for each SRA run accession in XML format into a separate directory called `results/metadata`.
-

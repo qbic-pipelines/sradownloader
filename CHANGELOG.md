@@ -11,6 +11,8 @@ Updated SRA-Tools to 2.10.8, which improves stability of the downloading and unp
 - Additionally, unpaired reads which are sometimes generated when splitting paired end data, are now saved in a separte directory inside the pairedEnd output directory.
 
 ### `Added`
+## 2020-12-10
+- New process for automatic metadata download by [@SusiJo](https://github.com/SusiJo)
 
 ### `Fixed`
 
