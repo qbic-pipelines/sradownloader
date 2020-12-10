@@ -190,6 +190,7 @@ process prefetch {
 
     output:
     file "[S,E,D]RR*[0-9]" into sra_files
+    val output_file into accessions
 
     script:
     output_file = run_acc.trim()
@@ -285,6 +286,31 @@ process output_documentation {
     markdown_to_html.py $output_docs -o results_description.html
     """
 }
+
+
+/*
+ * Step 5 - Download Metadata XML
+ */
+
+process get_metadata{
+	publishDir "${params.outdir}/metadata", mode:'copy'	
+
+	input:
+	val run_acc from accessions 		
+
+	output:
+	file "[S,E,D]RR*[0-9].xml"		
+
+	script:
+        def acc = run_acc
+	def ncbi ='https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&db=sra&rettype=SraExperimentPackage&term='
+	def url = "${ncbi}" + "${acc}"	
+	"""	
+	wget '${url}' -nv -O ${acc}.xml
+	
+	"""	
+}
+
 
 /*
  * Completion e-mail notification
