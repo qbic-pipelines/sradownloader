@@ -34,13 +34,13 @@ jobs:
 
       - name: Build new docker image
         if: env.MATCHED_FILES
-        run: docker build --no-cache . -t qbicpipelines/sradownloader:dev
+        run: docker build --no-cache . -t qbicpipelines/sradownloader:1.0.0
 
       - name: Pull docker image
         if: ${{ !env.MATCHED_FILES }}
         run: |
           docker pull qbicpipelines/sradownloader:dev
-          docker tag qbicpipelines/sradownloader:dev qbicpipelines/sradownloader:dev
+          docker tag qbicpipelines/sradownloader:dev qbicpipelines/sradownloader:1.0.0
 
       - name: Install Nextflow
         env:
