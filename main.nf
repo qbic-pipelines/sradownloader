@@ -22,6 +22,7 @@ def helpMessage() {
 
     Optional arguments:
       --ngc                         dbGAP repository key for files with controlled-access
+      --link			    url prefix for downloading metadata from NCBI	
 
     Other options:
       --outdir [file]                 The output directory where the results will be saved
@@ -78,6 +79,8 @@ ch_output_docs_images = file("$projectDir/docs/images/", checkIfExists: true)
 
 params.ngc = 'NO_FILE'
 ngc_file = file(params.ngc)
+
+params.link = 'https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&db=sra&rettype=SraExperimentPackage&term='
 
 if (!params.run_acc_list || params.run_acc_list == true) {
     exit 1, "Please provide a newline-separated list of SRA run accessions"
@@ -190,6 +193,7 @@ process prefetch {
 
     output:
     file "[S,E,D]RR*[0-9]" into sra_files
+    val output_file into ch_accessions
 
     script:
     output_file = run_acc.trim()
@@ -225,7 +229,7 @@ process fasterqdump {
  * STEP 3 - sort_fastq_files
 */
 process sort_fastq_files {
-    publishDir "${params.outdir}/sorted_output_files", mode: 'copy'
+    publishDir "${params.outdir}/sorted_output_files", mode: params.publish_dir_mode
 
     input:
     val fastq_files from fastq_files
@@ -285,6 +289,29 @@ process output_documentation {
     markdown_to_html.py $output_docs -o results_description.html
     """
 }
+
+
+/*
+ * Step 5 - Download Metadata XML
+ */
+
+process get_metadata{
+	publishDir "${params.outdir}/metadata", mode: params.publish_dir_mode	
+
+	input:
+	val run_acc from ch_accessions 		
+
+	output:
+	file "[S,E,D]RR*[0-9].xml"		
+
+	script:
+        def acc = run_acc
+	def url = "${params.link}" + "${acc}"	
+	"""	
+	wget '${url}' -nv -O ${acc}.xml
+	"""	
+}
+
 
 /*
  * Completion e-mail notification
@@ -352,7 +379,7 @@ workflow.onComplete {
     def email_html = html_template.toString()
 
     // Render the sendmail template
-    def smail_fields = [ email: email_address, subject: subject, email_txt: email_txt, email_html: email_html, baseDir: "$projectDir", mqcFile: mqc_report, mqcMaxSize: params.max_multiqc_email_size.toBytes() ]
+    def smail_fields = [ email: email_address, subject: subject, email_txt: email_txt, email_html: email_html, projectDir: "$projectDir", mqcFile: mqc_report, mqcMaxSize: params.max_multiqc_email_size.toBytes() ]
     def sf = new File("$projectDir/assets/sendmail_template.txt")
     def sendmail_template = engine.createTemplate(sf).make(smail_fields)
     def sendmail_html = sendmail_template.toString()
