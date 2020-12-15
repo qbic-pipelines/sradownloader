@@ -1,3 +1,5 @@
+# sradownloader
+
 **A pipeline to download raw data from SRA**.
 
 [![GitHub Actions CI Status](https://github.com/qbic-pipelines/sradownloader/workflows/nf-core%20CI/badge.svg)](https://github.com/qbic-pipelines/sradownloader/actions)
