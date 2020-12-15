@@ -1,6 +1,6 @@
 # You can use this file to create a conda environment for this pipeline:
 #   conda env create -f environment.yml
-name: steffenlem-sradownloader-1.0.0
+name: qbic-pipelines-sradownloader-1.0.0
 channels:
   - conda-forge
   - bioconda
@@ -15,4 +15,5 @@ dependencies:
   - conda-forge::click=7.1.1
   - conda-forge::markdown=3.1.1
   - conda-forge::shortuuid=1.0.1
+  - bioconda::multiqc=1.7
 

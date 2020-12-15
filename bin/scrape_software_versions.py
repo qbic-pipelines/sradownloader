@@ -5,7 +5,7 @@ import re
 
 # TODO nf-core: Add additional regexes for new tools in process get_software_versions
 regexes = {
-    'steffenlem/sradownloader': ['v_pipeline.txt', r"(\S+)"],
+    'qbic-pipelines/sradownloader': ['v_pipeline.txt', r"(\S+)"],
     'Nextflow': ['v_nextflow.txt', r"(\S+)"],
     'prefetch': ['v_prefetch.txt', r"(\d{1,2}\.\d{1,2}\.\d{1,2})"],
     'pigz': ['v_pigz.txt', r"(\d{1,2}\.\d{1,2})"],
@@ -13,7 +13,7 @@ regexes = {
     'Click': ['v_click.txt', r"(\d{1,2}\.\d{1,2})"]
 }
 results = OrderedDict()
-results['steffenlem/sradownloader'] = '<span style="color:#999999;\">N/A</span>'
+results['qbic-pipelines/sradownloader'] = '<span style="color:#999999;\">N/A</span>'
 results['Nextflow'] = '<span style="color:#999999;\">N/A</span>'
 
 
@@ -36,8 +36,8 @@ for k in results:
 # Dump to YAML
 print ('''
 id: 'software_versions'
-section_name: 'steffenlem/sradownloader Software Versions'
-section_href: 'https://github.com/steffenlem/sradownloader'
+section_name: 'qbic-pipelines/sradownloader Software Versions'
+section_href: 'https://github.com/qbic-pipelines/sradownloader'
 plot_type: 'html'
 description: 'are collected at run time from the software output.'
 data: |
@@ -49,5 +49,5 @@ print ("    </dl>")
 
 # Write out regexes as csv file:
 with open('software_versions.csv', 'w') as f:
-    for k,v in results.items():
-        f.write("{}\t{}\n".format(k,v))
+    for k, v in results.items():
+        f.write("{}\t{}\n".format(k, v))
