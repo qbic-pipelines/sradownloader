@@ -1,4 +1,4 @@
-# ![qbic-pipelines/sradownloader](docs/images/nf-core-sradownloader_logo.png)
+# sradownloader
 
 **A pipeline to download raw data from SRA**.
 
@@ -41,7 +41,9 @@ The nf-core/sradownloader pipeline comes with documentation about the pipeline: 
 
 ## Credits
 
-qbic-pipelines/sradownloader was originally written by Steffen Lemke.
+qbic-pipelines/sradownloader was originally written by [Steffen Lemke](@steffenlem). Useful contributions by [Susanne Jodoin](@SusiJo).
+
+This pipeline was created with the [nf-core](https://nf-co.re) template.
 
 ## Contributions and Support
 
