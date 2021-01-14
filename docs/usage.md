@@ -21,7 +21,8 @@
     - [`--awscli`](#--awscli)
   - [Other command line parameters](#other-command-line-parameters)
     - [`--outdir`](#--outdir)
-    - [`--link`](#--link)
+    - [`--experiment`](#--experiment)
+    - [`--runinfo`](#--runinfo)
     - [`--email`](#--email)
     - [`--email_on_fail`](#--email_on_fail)
     - [`-name`](#-name)
@@ -170,9 +171,13 @@ Please make sure to also set the `-w/--work-dir` and `--outdir` parameters to a 
 
 The output directory where the results will be saved.
 
-### `--link`
+### `--experiment`
 
-URL prefix for downloading SRA metadata from NCBI.
+URL prefix for downloading SRA experiment metadata from NCBI.
+
+### `--runinfo`
+
+URL prefix for downloading SRA runinfo metadata from NCBI.
 
 ### `--email`
 

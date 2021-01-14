@@ -22,7 +22,8 @@ def helpMessage() {
 
     Optional arguments:
       --ngc                         dbGAP repository key for files with controlled-access
-      --link			    url prefix for downloading metadata from NCBI	
+      --experiment		    url prefix for downloading experiment metadata from SRA NCBI
+      --runinfo 		    url prefix for downloading experiment metadata from SRA NCBI
 
     Other options:
       --outdir [file]                 The output directory where the results will be saved
@@ -80,7 +81,8 @@ ch_output_docs_images = file("$projectDir/docs/images/", checkIfExists: true)
 params.ngc = 'NO_FILE'
 ngc_file = file(params.ngc)
 
-params.link = 'https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&db=sra&rettype=SraExperimentPackage&term='
+params.experiment = 'https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&db=sra&rettype=SraExperimentPackage&term='
+params.runinfo = 'https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&db=sra&rettype=runinfo&term='
 
 if (!params.run_acc_list || params.run_acc_list == true) {
     exit 1, "Please provide a newline-separated list of SRA run accessions"
@@ -292,7 +294,7 @@ process output_documentation {
 
 
 /*
- * Step 5 - Download Metadata XML
+ * Step 5 - Download Metadata XML, CSV
  */
 
 process get_metadata{
@@ -303,12 +305,14 @@ process get_metadata{
 
 	output:
 	file "[S,E,D]RR*[0-9].xml"		
-
+	file "[S,E,D]RR*[0-9].csv"
 	script:
         def acc = run_acc
-	def url = "${params.link}" + "${acc}"	
+	def experiment_url = "${params.experiment}" + "${acc}"
+	def runinfo_url = "${params.runinfo}" + "${acc}" 	
 	"""	
-	wget '${url}' -nv -O ${acc}.xml
+	wget '${experiment_url}' -nv -O ${acc}.xml
+	wget '${runinfo_url}' -nv -O ${acc}.csv
 	"""	
 }
 
