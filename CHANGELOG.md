@@ -13,6 +13,7 @@ Updated SRA-Tools to 2.10.8, which improves stability of the downloading and unp
 ### `Added`
 
 - [#4](https://github.com/qbic-pipelines/sradownloader/pull/4) New process for automatic metadata download by [@SusiJo](https://github.com/SusiJo)
+- Added runinfo metadata download [@SusiJo](https://github.com/SusiJo)
 
 ### `Fixed`
 
